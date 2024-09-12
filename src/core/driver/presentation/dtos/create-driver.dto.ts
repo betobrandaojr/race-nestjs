@@ -1,6 +1,11 @@
-import { IsString, IsInt, Min } from 'class-validator';
+import { IsString, IsInt, Min, IsPositive, IsOptional } from 'class-validator';
 
 export class CreateDriverDto {
+  @IsInt()
+  @IsPositive()
+  @IsOptional()
+  id?: number;
+
   @IsString()
   name: string;
 

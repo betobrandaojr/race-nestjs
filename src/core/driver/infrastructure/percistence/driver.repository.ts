@@ -47,4 +47,15 @@ export class DriverRepositoryImpl implements DriverRepository {
       age: driverEntity.age,
     };
   }
+
+  async upsertDriver(id: number, name: string, age: number): Promise<void> {
+    const existingDriver = await this.driverRepository.findOneBy({ id });
+
+    if (existingDriver) {
+      await this.driverRepository.update(id, { name, age });
+    } else {
+      const newDriver = this.driverRepository.create({ id, name, age });
+      await this.driverRepository.save(newDriver);
+    }
+  }
 }

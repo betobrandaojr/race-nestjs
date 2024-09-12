@@ -5,4 +5,5 @@ export interface DriverRepository {
   getDriver(id: number): Promise<Driver>;
   getDrivers(): Promise<Driver[]>;
   updateDriver(id: number, name: string, age: number): Promise<void>;
+  upsertDriver(id: number, name: string, age: number): Promise<void>;
 }

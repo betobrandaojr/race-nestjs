@@ -8,6 +8,7 @@ import { UpdateDriverUseCase } from '../../core/driver/application/use-cases/upd
 import { IDriver } from './infrastructure/percistence/driver.entity';
 import { DriverController } from './presentation/driver.controller';
 import { DriverRepositoryImpl } from './infrastructure/percistence/driver.repository';
+import { UpsertDriverUseCase } from './application/use-cases/upsert-driver.use-case';
 
 @Module({
   imports: [TypeOrmModule.forFeature([IDriver])],
@@ -17,10 +18,10 @@ import { DriverRepositoryImpl } from './infrastructure/percistence/driver.reposi
     GetDriverUseCase,
     GetDriversUseCase,
     UpdateDriverUseCase,
-    // Repositório
+    UpsertDriverUseCase,
     {
-      provide: 'DriverRepository', // Nome da injeção de dependência
-      useClass: DriverRepositoryImpl, // Implementação do repositório
+      provide: 'DriverRepository',
+      useClass: DriverRepositoryImpl,
     },
   ],
 })
