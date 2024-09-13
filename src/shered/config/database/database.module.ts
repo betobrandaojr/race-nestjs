@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { IDriver } from '../../../core/driver/infrastructure/percistence/driver.entity';
+import { IRace } from 'src/core/race/infrastructure/persistence/race.entity';
 
 @Module({
   imports: [
@@ -11,8 +12,9 @@ import { IDriver } from '../../../core/driver/infrastructure/percistence/driver.
       username: 'postgres',
       password: 'postgres',
       database: 'postgres',
-      entities: [IDriver],
+      entities: [IDriver, IRace],
       synchronize: true,
+      logging: ['query'],
     }),
   ],
 })
